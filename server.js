@@ -5,6 +5,11 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static('.')); // Serve your test.html
 
+// Serve test.html when someone visits the root URL
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/test.html');
+});
+
 // Example chatbot endpoint
 app.post('/api/chat', (req, res) => {
     const { message } = req.body;
